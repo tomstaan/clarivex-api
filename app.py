@@ -20,13 +20,13 @@ ALLOWED_EXTENSIONS_AUDIO = {'mp3', 'mp4', 'mpeg', 'mpga', 'm4a', 'wav', 'webm'}
 # Allowed file extensions for images
 ALLOWED_EXTENSIONS_IMAGE = {'png', 'jpg', 'jpeg', 'bmp'}
 
-# Load your pre-trained Pixtral-12B model for images
-model_path = "/app/checkpoint-30/adapter_model.safetensors"  # Update this path to where your model is stored
-model = torch.load(model_path, map_location=torch.device('cpu'))  # Load model on CPU
+# Load your pre-trained Pixtral-12B model for images using Hugging Face's API
+model_path = "/app/checkpoint-30"  # Path to the directory containing model files
+model = LlavaForConditionalGeneration.from_pretrained(model_path, torch_dtype=torch.float16, low_cpu_mem_usage=True)
 model.eval()
 
 # Load processor for handling images
-processor = AutoProcessor.from_pretrained("mistral-community/pixtral-12b")
+processor = AutoProcessor.from_pretrained(model_path)
 
 # Check if the file is allowed
 def allowed_file(filename, allowed_extensions):
