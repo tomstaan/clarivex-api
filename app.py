@@ -21,7 +21,7 @@ ALLOWED_EXTENSIONS_AUDIO = {'mp3', 'mp4', 'mpeg', 'mpga', 'm4a', 'wav', 'webm'}
 ALLOWED_EXTENSIONS_IMAGE = {'png', 'jpg', 'jpeg', 'bmp'}
 
 # Load your pre-trained Pixtral-12B model for images
-model_path = "/app/../checkpoint-30"  # Update this path to where your model is stored
+model_path = "/app/checkpoint-30"  # Update this path to where your model is stored
 model = torch.load(model_path, map_location=torch.device('cpu'))  # Load model on CPU
 model.eval()
 
