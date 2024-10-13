@@ -22,7 +22,7 @@ ALLOWED_EXTENSIONS_IMAGE = {'png', 'jpg', 'jpeg', 'bmp'}
 
 # Load your pre-trained Pixtral-12B model for images using Hugging Face's API
 model_path = "/app/checkpoint-30"  # Path to the directory containing model files
-model = LlavaForConditionalGeneration.from_pretrained(model_path, torch_dtype=torch.float16, low_cpu_mem_usage=True)
+model = LlavaForConditionalGeneration.from_pretrained(model_path, torch_dtype=torch.float16)
 model.eval()
 
 # Load processor for handling images
